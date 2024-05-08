@@ -1,0 +1,353 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root{
+    --bg-color: #051937;
+    --bg-secondary: #374366;
+    --rose: #FFAEDC;
+    --blue: #548ef8;
+    --bg-color-gradient: linear-gradient(to right bottom, #051937, #17233f, #262f46, #343a4e, #424656);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat';
+}
+
+main{
+    display: grid;
+    min-height: 100vh;
+    background: var(--bg-color);
+    background: var(--bg-color-gradient);
+    color: white;
+}
+
+.welcome{
+    display: flex;
+    position: relative;
+    height: 100vh;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.welcome .text-header{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0px 0px 30px 30px;
+    justify-content: center;
+}
+
+.text-header h1{
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+.text-header h2{
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+.welcome .wallpaper{
+    display: flex;
+    height: 89%;
+    margin-top: 20px;
+    margin-left: 50px;
+    width: 80%;
+    overflow: hidden;
+    justify-content: flex-end;
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+    user-select: none;
+    box-shadow: 0px 0px 10px #000000a4,
+                -15px 15px 0 var(--blue),
+                0px 15px 0 var(--blue),
+                -20px 20px 0 var(--rose),
+                0px 20px 0 var(--rose);
+}
+
+.wallpaper img{
+    height: 100%;
+}
+
+
+/* ABOUT */
+.about{
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.about .container{
+    display: flex;
+    flex-direction: column;
+    margin: 100px;
+    padding: 20px;
+    width: 60%;
+    text-align: justify;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    font-size: 25px;
+}
+
+.about .container h2{
+    font-size: 2.5rem;
+    border-top: solid 2px var(--rose);
+    border-bottom: solid 2px var(--rose);
+    padding: 3px 0;
+    width: 280px;
+}
+
+.about .container p{
+    margin-top: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 30px;
+    background: var(--bg-secondary); 
+}
+
+.about a{
+    color: var(--blue);
+}
+
+/* EDICCIONES */
+.videos{
+    display: flex;
+    flex-direction: column;
+    max-width: 100vw;
+    width: 100%;
+    overflow: hidden;
+    align-items: center;
+}
+.videos h2{
+    font-size: 2.5rem;
+    text-align: center;
+    border-top: var(--rose) solid 2px;
+    border-bottom: var(--rose) solid 2px;
+    padding: 3px 0;
+}
+
+.videos .scroll-cards{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 50px;
+    width: 80%;
+    gap: 30px;
+}
+
+
+/* SWIPER SLIDER */
+.container-slide{
+    display: flex;
+    width: 100%;
+    background: var(--bg-secondary);
+    margin-top: 20px;
+    height: 90%;
+    user-select: none;
+}
+
+.swiper{
+    max-width: 100%;
+    margin: 40px 0;
+}
+
+.swiper-slide{
+    display: flex !important; 
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-button-next span, .swiper-button-prev span{
+    color: white;
+    font-size: 3rem;
+}
+
+.swiper-button-next::after, .swiper-button-prev::after {
+    content: "" !important;
+}
+
+/* CARDS */
+.video-card{
+    display: flex;
+    width: 250px;
+    max-width: 250px;
+    position: relative;
+    justify-content: center;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* PLAY-RESUME BUTTON */
+.video-card .play-resume{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.363);
+    transition: .2s all ease;
+    z-index: 100;
+}
+
+.video-card .play-resume:hover{
+    color: rgb(240, 240, 240);
+    transition: .2s all ease;
+}
+
+.video-card .play-resume span{
+    font-size: 8rem;
+}
+
+.video-card .play-resume.hide{
+    pointer-events: none;
+    opacity: 0;
+    transition: .2s all ease;
+}
+
+/* DURATION VIDEO */
+.duration-area{
+    position: absolute;
+    height: 0px;
+    width: 100%;
+    z-index: 10;
+}
+
+.duration-area .current-time{
+    width: 0;
+    height: 100%;
+    background: rgb(254, 44, 85);
+    transition: .1s all ease;
+}
+
+video{
+    display: flex;
+    width: 100%;
+}
+
+video::-webkit-media-controls {
+    display:none !important;
+}
+
+.container-controls{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .2s ease opacity;
+}
+
+.container-controls.fullscreen button span{
+    font-size: 2rem;
+}
+
+.container-controls.fullscreen .controls{
+    padding: 20px;
+}
+
+.container-controls.fullscreen .account{
+    padding: 20px;
+}
+
+.container-controls:hover{
+    opacity: 1;
+    transition: .2s ease opacity;
+}
+
+.container-controls::before{
+    content: '';
+    position: absolute;
+    background: linear-gradient(to bottom,rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
+    bottom: 0;
+    left: 0;
+    height: 20%;
+    width: 100%;
+    z-index: 1;
+}
+
+.container-controls::after{
+    content: '';
+    position: absolute;
+    background: linear-gradient(to top,rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
+    top: 0;
+    left: 0;
+    height: 20%;
+    width: 100%;
+    z-index: 1;
+}
+
+/* EDICIONES - CONTROLS */
+.container-controls .controls{
+    display: flex;
+    gap: 15px;
+    padding: 5px;
+    padding-bottom: 7px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.controls button{
+    background: none;
+    outline: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.controls .fullscreen{
+    margin-left: auto;
+}
+
+/* EDICIONES - ACCOUNT INFO */
+.container-controls .account{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    width: 100%;
+    padding: 5px;
+    z-index: 10;
+}
+
+.account .img-profile a{
+    display: flex;
+    height: 50px;
+    width: 50px;
+    justify-content: center;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.account a{
+    color: white;
+    text-decoration: none;
+}
+
+.account .link-profile{
+    display: flex;
+    border-radius: 2px;
+    padding: 5px;
+    font-size: 15px;
+    font-weight: 600;
+    background: rgb(254, 44, 85);
+    flex-direction: column;
+    margin-left: auto;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+
+.account .link-profile:hover{
+    background: #EF2A50;
+    transition: all .2s ease;
+}
